@@ -1,4 +1,4 @@
-import InterestForm from "@/components/InterestForm";
+import { InterestForm } from "@/components";
 
 export default function Home() {
   return (
