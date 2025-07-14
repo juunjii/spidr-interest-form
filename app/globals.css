@@ -5,6 +5,8 @@
 
   --color-cyan-700: #56acbd;
 
+  --color-cyan-800: #479dafe6;
+
   --color-gray-800: #252627;
 
   --animate-fade-in: fadeIn 0.4s ease-in-out forwards;
@@ -31,7 +33,7 @@
   }
 
   .input-group label {
-    @apply font-light mb-2 text-white;
+    @apply font-thin text-sm mb-2 text-white;
   }
 
   .input-group input {
@@ -44,7 +46,7 @@
   }
 
   .btn {
-    @apply w-full py-1.5 px-3 border-1 border-solid border-white font-medium text-lg cursor-pointer transition-all duration-300 ease-out text-white;
+    @apply w-full py-1.5 px-3 border-1 border-solid border-white font-normal text-base cursor-pointer transition-all duration-300 ease-out text-white;
   }
 
   .btn:hover {

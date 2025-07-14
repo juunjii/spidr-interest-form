@@ -55,13 +55,13 @@ const InterestForm: React.FC = () => {
   };
 
   return (
-    <div className="max-w-lg bg-[#479dafe6] p-8 mt-16 mx-auto">
+    <div className="max-w-lg bg-cyan-800 p-8 mt-16 mx-auto">
       {!submitted ? (
         <form
           className="interest-form fade-in font-default"
           onSubmit={handleSubmit}
         >
-          <h1 className="font-display text-3xl mb-6 text-white text-center font-medium">
+          <h1 className="font-display text-3xl mb-6 text-white text-center font-extralight">
             Join the Air Fryer Craze
           </h1>
 
