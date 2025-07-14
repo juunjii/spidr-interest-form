@@ -26,12 +26,16 @@ https://juunjii.github.io/spidr-interest-form/
 └─ tsconfig.json
 ```
 # Design
-This section 
+This section outlines the design decisions behind the development of the interest form for Spidr Design's air fryer landing page. It covers the overall component structure, user interface styling choices inspired by Spidr’s visual identity, and the form’s interactivity and validation logic. Additionally, it highlights how accessibility and user experience were considered in the implementation, and concludes with potential improvements for scalability, maintainability, and production readiness.
+
+1. Visual Identity
+    - I have identified 
+
 ## Frameworks used
     - Next.js
-    - Tailwind CSS
+    - Tailwind CSS: 
 
-    
+
 # Reflection
 
 
