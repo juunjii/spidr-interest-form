@@ -137,10 +137,11 @@ const InterestForm: React.FC = () => {
               required
             />
           </div>
-
-          <button className="btn" type="submit">
-            Submit
-          </button>
+          <div className="flex justify-center">
+            <button className="btn" type="submit">
+              Submit
+            </button>
+          </div>
         </form>
       ) : (
         <div className="text-center p-8 text-white fade-in">

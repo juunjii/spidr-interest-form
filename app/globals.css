@@ -46,7 +46,7 @@
   }
 
   .btn {
-    @apply w-full py-1.5 px-3 border-1 border-solid border-white font-normal text-base cursor-pointer transition-all duration-300 ease-out text-white;
+    @apply w-25 py-1.5 px-3 border-1 border-solid border-white font-normal text-base cursor-pointer transition-all duration-300 ease-out text-white;
   }
 
   .btn:hover {
