@@ -1,0 +1,286 @@
+// "use client";
+
+// import React from "react";
+// import { useState, useCallback } from "react";
+
+// interface FormData {
+//   firstName: string;
+//   lastName: string;
+//   phone: string;
+//   email: string;
+//   costGuess: string;
+//   spidrPin: string;
+// }
+
+// function InterestForm() {
+//   const [formData, setFormData] = useState({
+//     firstName: "",
+//     lastName: "",
+//     phone: "",
+//     email: "",
+//     costGuess: "",
+//     spidrPin: "",
+//   });
+
+//   const formatSpidrPin = (value: string): string => {
+//     const raw = value.replace(/\D/g, "").slice(0, 16);
+//     return raw.match(/.{1,4}/g)?.join("-") || "";
+//   };
+
+//   const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+//     const { name, value } = e.target;
+
+//     setFormData((prev) => ({
+//       ...prev,
+//       [name]: name === "spidrPin" ? formatSpidrPin(value) : value,
+//     }));
+//   }, []);
+
+//   const handleSubmit = useCallback(
+//     (e: React.FormEvent<HTMLFormElement>) => {
+//       e.preventDefault();
+//       console.log("Form Submitted:", formData);
+//     },
+//     [formData]
+//   );
+
+//   return (
+//     <div className="form-container">
+//       <form className="interest-form" onSubmit={handleSubmit}>
+//         <h1>Join the Air Fryer Craze</h1>
+
+//         <div className="input-group">
+//           <label>First Name</label>
+//           <input
+//             type="text"
+//             name="firstName"
+//             value={formData.firstName}
+//             onChange={handleChange}
+//             required
+//           />
+//         </div>
+
+//         <div className="input-group">
+//           <label>Last Name</label>
+//           <input
+//             type="text"
+//             name="lastName"
+//             value={formData.lastName}
+//             onChange={handleChange}
+//             required
+//           />
+//         </div>
+
+//         <div className="input-group">
+//           <label>Phone Number</label>
+//           <input
+//             type="tel"
+//             name="phone"
+//             value={formData.phone}
+//             pattern="^\d{10,15}$"
+//             onChange={handleChange}
+//             title="Enter a valid phone number (10–15 digits)"
+//             required
+//           />
+//         </div>
+
+//         <div className="input-group">
+//           <label>Email Address</label>
+//           <input
+//             type="email"
+//             name="email"
+//             value={formData.email}
+//             onChange={handleChange}
+//             required
+//           />
+//         </div>
+
+//         <div className="input-group">
+//           <label>Guess the Air Fryer’s Cost ($)</label>
+//           <input
+//             type="number"
+//             name="costGuess"
+//             value={formData.costGuess}
+//             onChange={handleChange}
+//             required
+//           />
+//         </div>
+
+//         <div className="input-group">
+//           <label>Very Secret 16-Digit Spidr PIN</label>
+//           <input
+//             type="text"
+//             name="spidrPin"
+//             value={formData.spidrPin}
+//             onChange={handleChange}
+//             placeholder="####-####-####-####"
+//             required
+//           />
+//         </div>
+
+//         <button type="submit">Submit</button>
+//       </form>
+//     </div>
+//   );
+// }
+
+// export default InterestForm;
+
+"use client";
+
+import React, { useState, useCallback } from "react";
+
+interface FormData {
+  firstName: string;
+  lastName: string;
+  phone: string;
+  email: string;
+  costGuess: string;
+  spidrPin: string;
+}
+
+const defaultFormData: FormData = {
+  firstName: "",
+  lastName: "",
+  phone: "",
+  email: "",
+  costGuess: "",
+  spidrPin: "",
+};
+
+const InterestForm: React.FC = () => {
+  const [formData, setFormData] = useState<FormData>(defaultFormData);
+  const [submitted, setSubmitted] = useState(false);
+
+  // Enforce spidr pin format
+  const formatSpidrPin = (value: string): string => {
+    const raw = value.replace(/\D/g, "").slice(0, 16); // only accepts digits
+    return raw.match(/.{1,4}/g)?.join("-") || ""; // delimiter
+  };
+
+  // Avoid re-renders; memoized function
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: name === "spidrPin" ? formatSpidrPin(value) : value,
+    }));
+  }, []);
+
+  const handleSubmit = useCallback(
+    (e: React.FormEvent<HTMLFormElement>) => {
+      e.preventDefault();
+      console.log("Form Submitted:", formData);
+      setSubmitted(true);
+    },
+    [formData]
+  );
+
+  const handleReset = () => {
+    setFormData(defaultFormData);
+    setSubmitted(false);
+  };
+
+  return (
+    <div className="max-w-lg bg-[#479dafe6] p-8 mt-16 mx-auto">
+      {!submitted ? (
+        <form
+          className="interest-form fade-in font-default"
+          onSubmit={handleSubmit}
+        >
+          <h1 className="font-display text-3xl mb-6 text-white text-center font-medium">
+            Join the Air Fryer Craze
+          </h1>
+
+          <div className="input-group">
+            <label htmlFor="firstName">First Name</label>
+            <input
+              type="text"
+              name="firstName"
+              value={formData.firstName}
+              onChange={handleChange}
+              placeholder="John"
+              required
+            />
+          </div>
+
+          <div className="input-group">
+            <label htmlFor="lastName">Last Name</label>
+            <input
+              type="text"
+              name="lastName"
+              value={formData.lastName}
+              onChange={handleChange}
+              placeholder="Doe"
+              required
+            />
+          </div>
+
+          <div className="input-group">
+            <label htmlFor="phone">Phone Number</label>
+            <input
+              type="tel"
+              name="phone"
+              value={formData.phone}
+              pattern="^\d{10,15}$"
+              onChange={handleChange}
+              title="Enter a valid phone number (10–15 digits)"
+              placeholder="123-456-7890"
+              required
+            />
+          </div>
+
+          <div className="input-group">
+            <label htmlFor="email">Email Address</label>
+            <input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="john@example.com"
+              required
+            />
+          </div>
+
+          <div className="input-group">
+            <label htmlFor="costGuess">Guess the Air Fryer’s Cost ($)</label>
+            <input
+              type="number"
+              name="costGuess"
+              value={formData.costGuess}
+              onChange={handleChange}
+              required
+            />
+          </div>
+
+          <div className="input-group">
+            <label htmlFor="spidrPin">Very Secret 16-Digit Spidr PIN</label>
+            <input
+              type="text"
+              name="spidrPin"
+              value={formData.spidrPin}
+              onChange={handleChange}
+              placeholder="####-####-####-####"
+              required
+            />
+          </div>
+
+          <button className="btn" type="submit">
+            Submit
+          </button>
+        </form>
+      ) : (
+        <div className="text-center p-8 text-white fade-in">
+          <h2>Form Submitted Successfully!</h2>
+          <p>Thanks for joining the Air Fryer Craze. We’ll be in touch soon.</p>
+          <button className="btn mt-5" onClick={handleReset}>
+            Submit Another Entry
+          </button>
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default InterestForm;

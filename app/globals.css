@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+@theme {
+  --font-default: "Raleway", sans-serif;
+
+  --color-cyan-700: #56acbd;
+
+  --animate-fade-in: fadeIn 0.4s ease-in-out forwards;
+
+  @keyframes fadeIn {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+}
+
+@layer base {
+  body {
+    @apply bg-[#2c2c2c] m-0 p-0;
+  }
+}
+
+@layer components {
+  .input-group {
+    @apply flex flex-col mb-6;
+  }
+
+  .input-group label {
+    @apply font-light mb-2 text-white;
+  }
+
+  .input-group input {
+    @apply p-3 bg-[#181818cc] text-white text-base duration-100 ease-in-out;
+    transition-property: border;
+  }
+
+  .input-group input:focus {
+    @apply outline-none border-1 border-solid border-cyan-700;
+  }
+
+  .btn {
+    @apply w-full py-1.5 px-3 border-1 border-solid border-white font-medium text-lg cursor-pointer transition-all duration-300 ease-out text-white;
+  }
+
+  .btn:hover {
+    @apply cursor-pointer text-cyan-700 bg-[#00000099] border-1 border-solid border-cyan-700;
+  }
+}
+
+@layer utilities {
+  .fade-in {
+    @apply opacity-0;
+    animation: var(--animate-fade-in);
+  }
+}
