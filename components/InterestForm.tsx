@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useCallback } from "react";
+import { useState, useCallback } from "react";
 
 interface FormData {
   firstName: string;
@@ -138,16 +138,18 @@ const InterestForm: React.FC = () => {
             />
           </div>
           <div className="flex justify-center">
-            <button className="btn" type="submit">
+            <button className="btn w-25" type="submit">
               Submit
             </button>
           </div>
         </form>
       ) : (
-        <div className="text-center p-8 text-white fade-in">
-          <h2>Form Submitted Successfully!</h2>
-          <p>Thanks for joining the Air Fryer Craze. We’ll be in touch soon.</p>
-          <button className="btn mt-5" onClick={handleReset}>
+        <div className=" font-default text-center p-8 text-white fade-in">
+          <h2 className="font-light">Form Submitted Successfully!</h2>
+          <p className="font-thin text-sm">
+            Thanks for joining the Air Fryer Craze.
+          </p>
+          <button className="btn w-50 mt-5" onClick={handleReset}>
             Submit Another Entry
           </button>
         </div>

@@ -76,6 +76,7 @@ These small but thoughtful choices collectively enhance usability and create a s
 ## 4. Extensibility
 
 - I've decided to include the `useCallback` hook, to optimize performance and future-proof the form componenet, specifically to memoize the event handler functions- `handleChange` and `handleSubmit`, which would be useful when the form gets refactored to include child compoennts, and stable function identities can prevent unnecessary re-renders when passed as props.
+- I've also included a centralized bundle file - `index.ts` to export components (although there's just one component for now). However, when the project gets extended with more components, this bundling approach allows multiple exports from a single directory to be accessed via a concise import path, reducing the need for long, repetitive relative imports like `../../../components/InputField`. This approach aims to allow for better scalability and maintainability, helping to keep imports clean and the project modular.
 
 ## Reflection/Considerations
 
