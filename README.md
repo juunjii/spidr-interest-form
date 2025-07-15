@@ -70,6 +70,8 @@ This section outlines the design decisions behind the development of the interes
   - Native HTML validation (such as required, pattern, and type) is included to enforce baseline input correctness—like ensuring phone numbers are between 10 and 15 digits.
 
   - Upon submission, the form dynamically transitions into a friendly confirmation message, reassuring the user that their entry was received and offering a clear path to submit another.
+ 
+- Moreover, I've also ensured that the interest form is responsive to various screen sizes, so that users would still be able to perform form submissions regardless of what device they choose to use. 
 
 These small but thoughtful choices collectively enhance usability and create a smooth interaction flow aligned with Spidr’s fun brand identity (the GIFs behind the profile pictures were a neat touch🤪).
 
